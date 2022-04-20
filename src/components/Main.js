@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Nav from './Nav'
-import Footer from "./Footer";
+import Animation from "./Animation";
+
+
 import Corolla from "../images/Corolla.png";
 import Corolla2 from "../images/Corolla2.png";
 import Watches from "../images/Watches.png";
@@ -18,60 +19,21 @@ import webpage from "../images/webpage.png";
 import '../styles/style.scss'
 
 function Main() {
-    const splitNum = (num) => {
-        if (parseInt(num / 100) > 0) {
-            return num;
-        } else if (parseInt(num / 10) > 0) {
-            return "0" + num;
-        } else if (parseInt(num / 1) > 0) {
-            return "00" + num;
-        } else {
-            return "000";
-        }
-    }
-    useEffect(() => {
-        axios.get('https://api.unsplash.com/users/bbestamis/photos/?client_id=6qXAO0Wgvt5eIyFyoaQNU5NGFDcmBJMtz0r8airRWlM').then(response => {
-            setLastPic(response.data[0].urls.regular);
-            setLastPicLink(response.data[0].links.html);
-        });
-        axios.get('https://api.unsplash.com/users/bbestamis/statistics/?client_id=6qXAO0Wgvt5eIyFyoaQNU5NGFDcmBJMtz0r8airRWlM').then(response => {
-            let downloads = response.data.downloads.total;
-            if (parseInt(downloads / 1000) == 0) {
-                setUnsplashDownloads(splitNum(downloads));
-            } else {
-                if (parseInt(downloads / 1000000) == 0) {
-                    setUnsplashDownloads(
-                        parseInt(downloads / 1000) +
-                        "." +
-                        splitNum(downloads % 1000));
-                } else {
-                    setUnsplashDownloads(
-                        parseInt(downloads / 1000000) +
-                        "." +
-                        splitNum(parseInt((downloads % 1000000) / 1000)) +
-                        "." +
-                        splitNum(downloads % 1000));
-                }
-            }
-            let views = response.data.views.total;
-            if (parseInt(views / 1000) == 0) {
-                setUnsplashViews(splitNum(views));
-            } else {
-                if (parseInt(views / 1000000) == 0) {
-                    setUnsplashViews(
-                        parseInt(views / 1000) + "." + splitNum(views % 1000));
-                } else {
-                    setUnsplashViews(
-                        parseInt(views / 1000000) +
-                        "." +
-                        splitNum(parseInt((views % 1000000) / 1000)) +
-                        "." +
-                        splitNum(views % 1000));
-                }
-            }
-        });
-    }, []);
 
+
+    useEffect(() => {
+
+        axios.get('https://bbestamis-api.herokuapp.com/getlastphoto').then(response => {
+            setLastPic(response.data.url);
+            setLastPicLink(response.data.link);
+
+        });
+        axios.get('https://bbestamis-api.herokuapp.com/getstatus').then(response => {
+            setUnsplashDownloads(response.data.downloads);
+            setUnsplashViews(response.data.views);
+        });
+
+    }, []);
     const [lastPicLink, setLastPicLink] = useState(null);
     const [lastPic, setLastPic] = useState(null);
     const [unsplashDownloads, setUnsplashDownloads] = useState(null);
@@ -80,7 +42,7 @@ function Main() {
         return (
             // Hi section start
             <div className="tamplate">
-                <Nav />
+
                 <article id="main-article">
                     <div id="hi-div">
                         <div id="hi-main">
@@ -242,11 +204,11 @@ function Main() {
                     {/* <!-- Webdev section end --> */}
                     <div id="bottom-div"></div>
                 </article >
-                <Footer />
+
             </div >
         );
     } else {
-        return (<div></div>)
+        return (<Animation />)
     }
 
 }
