@@ -15,17 +15,23 @@ function App() {
   const [cursor, setCursor] = useState(false);
   const [cursorPositionY, setCursorPositionY] = useState("0 px");
   const [cursorPositionX, setCursorPositionX] = useState("0 px");
+  const [cursorOpacity, setCursorOpacity] = useState(false);
+
   const changeCursorPossition = (e) => {
-    // console.log((e.pageY - 10).toString());
     setCursorPositionY((e.pageY - 10).toString() + "px")
     setCursorPositionX((e.pageX - 10).toString() + "px")
+    setCursorOpacity(true)
+  }
+  const changeCursorOpocity = (e) => {
+
+    setCursorOpacity(false)
   }
 
   return (
     <Rooter>
-      <div className="app" onMouseMove={changeCursorPossition} >
+      <div className="app" onMouseMove={changeCursorPossition} onMouseLeave={changeCursorOpocity} >
         <div id="cursor" style={{ top: cursorPositionY, left: cursorPositionX }} >
-          <div style={!cursor ? { opacity: "100%" } : { opacity: "0%" }} ></div>
+          <div style={!cursor ? { opacity: cursorOpacity ? "100%" : "0%" } : { opacity: "0%" }} ></div>
         </div>
         <Nav cursor={cursor} setCursor={setCursor} />
 
