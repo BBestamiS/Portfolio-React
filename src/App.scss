@@ -1,3 +1,21 @@
 .app {
   background: #3B185F;
+  cursor: none;
+}
+
+#cursor {
+  z-index: 999999;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  pointer-events: none;
+
+  transition-timing-function: ease-out;
+}
+
+#cursor div {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #27f579;
 }

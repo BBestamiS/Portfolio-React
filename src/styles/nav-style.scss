@@ -1,4 +1,4 @@
-.nav-article {
+#nav-article {
     z-index: 100;
     position: fixed;
     top: 0px;
@@ -18,7 +18,7 @@
     background-position: center;
 }
 
-.navbar {
+#navbar {
     height: 100%;
 }
 
@@ -30,7 +30,7 @@
     height: 100%
 }
 
-.nav-link-div {
+#nav-link-div {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -51,18 +51,18 @@
     filter: blur(5px);
 }
 
-.nav-link-div a {
+#nav-link-div a {
     border-radius: 10px;
     padding: 10px;
     z-index: 1;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 20px;
     text-decoration: none;
     color: black;
     transition: 0.5s;
 }
 
-.nav-link-div a:hover {
+#nav-link-div a:hover {
     color: blue;
 }
 
@@ -88,11 +88,11 @@
         flex-direction: column;
     }
 
-    .nav-link-div {
+    #nav-link-div {
         width: 100%;
     }
 
-    .nav-article {
+    #nav-article {
         height: 13%;
     }
 

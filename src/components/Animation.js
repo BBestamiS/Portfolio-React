@@ -5,7 +5,9 @@ import loading from '../animations/loading.riv'
 function Animation() {
     return (
         <div className="rive-div">
-            <Rive src={loading} />
+            <div id='animate-size' >
+                <Rive src={loading} />
+            </div>
         </div>
     );
 }
