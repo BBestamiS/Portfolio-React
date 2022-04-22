@@ -42,6 +42,7 @@ function App() {
           <Route path="/social" element={<Social />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="*" element={<About />} />
         </Routes>
 
         <Footer />
