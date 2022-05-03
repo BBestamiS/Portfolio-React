@@ -1,6 +1,5 @@
 
 import React, { useEffect } from "react";
-import About from "./components/About";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import Social from "./components/Social";
@@ -41,8 +40,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/social" element={<Social />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="*" element={<About />} />
+          <Route path="*" element={<Main />} />
         </Routes>
 
         <Footer />

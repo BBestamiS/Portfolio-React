@@ -20,7 +20,7 @@ function GetLink(props) {
 
     }
     return (
-        path == linkPath ? <Link onMouseEnter={changeStateTrue} onMouseOut={changeStateFalse} to={"/"} >Main</Link> : <Link onMouseEnter={changeStateTrue} onMouseOut={changeStateFalse} to={linkPath} >{linkName}</Link>
+        path == linkPath ? <Link onMouseEnter={changeStateTrue} onMouseOut={changeStateFalse} to={"/"} >About Me</Link> : <Link onMouseEnter={changeStateTrue} onMouseOut={changeStateFalse} to={linkPath} >{linkName}</Link>
     )
 }
 
@@ -32,12 +32,16 @@ function Nav(props) {
         <div id="nav-article">
             <div id="navbar">
                 <div className="nav-items">
-                    <div className="logo"></div>
+                    <div className="logo">
+                        {/* <div>
+                            <p>Beyazıt Bestami</p>
+                            <p>Sarıkaya</p>
+                        </div> */}
+                    </div>
                     <div id="nav-link-div">
                         <GetLink path={path} linkPath={"/projects"} linkName={"Projects"} setCursor={props.setCursor} cursor={props.cursor} />
                         <GetLink path={path} linkPath={"/social"} linkName={"Social"} setCursor={props.setCursor} cursor={props.cursor} />
                         <GetLink path={path} linkPath={"/contact"} linkName={"Contact"} setCursor={props.setCursor} cursor={props.cursor} />
-                        <GetLink path={path} linkPath={"/about"} linkName={"About"} setCursor={props.setCursor} cursor={props.cursor} />
                     </div>
                 </div>
                 <div className="nav-bg"></div>
